@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import Buttons from "../components/Buttons";
  
-import useFetchUser from "../hooks/useFetchUser";
+import useFetchUser from "../hooks/useFetchUsers";
  
 const AddUser = () => {
   const { nombre, edad, correo, setNombre, setEdad, setCorreo, handleGuardar } =

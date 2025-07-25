@@ -1,46 +1,31 @@
-import { StyleSheet, Text, View } from "react-native";
- 
-const CardUser = ({ user }) => {
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+
+const CardUser = ({ user, onEditar, onEliminar }) => {
   return (
     <View style={styles.card}>
       <Text style={styles.cardTitle}>{user.nombre}</Text>
       <Text style={styles.cardText}>Edad: {user.edad}</Text>
       <Text style={styles.cardText}>Correo: {user.correo}</Text>
+
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          style={[styles.button, styles.editButton]}
+          onPress={() => onEditar(user)}
+        >
+          <Text style={styles.buttonText}>Editar</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.button, styles.deleteButton]}
+          onPress={() => onEliminar(user.id)}
+        >
+          <Text style={styles.buttonText}>Eliminar</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
- 
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#EAD8C0",
-    paddingHorizontal: 20,
-    paddingTop: 40,
-  },
-  listContainer: {
-    paddingBottom: 30,
-  },
-  title: {
-    fontSize: 26,
-    fontWeight: "bold",
-    color: "#5C3D2E",
-    textAlign: "center",
-    marginBottom: 5,
-  },
-  subtitle: {
-    fontSize: 16,
-    fontWeight: "500",
-    color: "#5C3D2E",
-    textAlign: "center",
-    marginBottom: 10,
-  },
-  counterText: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: "#3B2C24",
-    textAlign: "center",
-    marginBottom: 10,
-  },
   card: {
     backgroundColor: "#FFF",
     borderRadius: 12,
@@ -62,6 +47,27 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#3B2C24",
   },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    marginTop: 15,
+  },
+  button: {
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderRadius: 6,
+    marginLeft: 10,
+  },
+  editButton: {
+    backgroundColor: "#F4A261",
+  },
+  deleteButton: {
+    backgroundColor: "#E76F51",
+  },
+  buttonText: {
+    color: "#FFF",
+    fontWeight: "600",
+  },
 });
- 
+
 export default CardUser;
